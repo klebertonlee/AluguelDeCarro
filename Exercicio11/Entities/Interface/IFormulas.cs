@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercicio11.Cadastros
+namespace Exercicio11.Entities.Interface
 {
-    class MenuCadastro
+    internal interface IFormulas
     {
-       
+        double Tax(double tax);
+
+
     }
 }

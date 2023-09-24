@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercicio11
 {
-    internal class MenuCadastro
+    internal class BancoSQL
     {
-
     }
 }

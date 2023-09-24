@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercicio11.Aluguel
+namespace System
 {
-    internal class CalculoAluguel
+    internal class DateExtension
     {
 
     }

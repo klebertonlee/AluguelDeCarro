@@ -1,8 +1,10 @@
-﻿using Exercicio11.Cadastros;
+﻿using Exercicio11.Aluguel;
+using Exercicio11.Cadastros;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+
 
 
 namespace Exercicio11
@@ -12,10 +14,11 @@ namespace Exercicio11
 
         static void Main(string[] args)
         {
-            Menu();
+            MenuCadastro();
+            MenuCarro();
 
         }
-        public static void Menu()
+        public static void MenuCadastro()
         {
 
 
@@ -38,6 +41,7 @@ namespace Exercicio11
 
                     case 1:
                         {
+                            //Cadastro do veiculo
                             List<CadastroCarro> CarroCadastro = new List<CadastroCarro>();
                             Console.WriteLine("Cadastro de Veiculo:");
                             Console.WriteLine();
@@ -48,14 +52,18 @@ namespace Exercicio11
                             string ModeloCarro = Console.ReadLine();
                             Console.Write("Ano: ");
                             int AnoCarro = int.Parse(Console.ReadLine());
-                            double ValorDia = double.Parse(Console.ReadLine());
-                            Console.WriteLine();
-                            CarroCadastro.Add(new CadastroCarro(ModeloCarro, MarcaCarro, AnoCarro, ValorDia));
+                            Console.Write("Valor da diaria: ");
+                            double ValorDia = double.Parse(Console.ReadLine());                           
+
+                            CarroCadastro.Add(new CadastroCarro
+                                (
+                                ModeloCarro, MarcaCarro, AnoCarro, ValorDia));
                             Console.WriteLine();
                         }
                         break;
                     case 2:
                         {
+                            //cadastro do cliente
                             List<CadastroCliente> ClienteCadastro = new List<CadastroCliente>();
                             Console.WriteLine("Cadastro de Cliente");
                             Console.WriteLine();
@@ -86,6 +94,7 @@ namespace Exercicio11
                         break;
                     case 3:
                         {
+                            //cadastro do funcionario
                             List<CadastroFuncionario> FuncionarioCadastro = new List<CadastroFuncionario>();
                             Console.WriteLine("Cadastro do Funcionario");
                             Console.WriteLine();
@@ -116,12 +125,13 @@ namespace Exercicio11
 
                     default:
                         {
+                            //Caso seja inserido um codigo errado
                             Console.Clear();
                             Console.WriteLine();
                             Console.WriteLine("Código Invalido");
                             Console.WriteLine("Digite o Código Referente ao Cadastro Desejado: ");
                             Console.WriteLine();
-                            Menu();
+                            MenuCadastro();
                         }
                         break;
                 }
@@ -131,7 +141,36 @@ namespace Exercicio11
                 Console.WriteLine();
                 Console.WriteLine("Erro de Digitação" + k.Message);
             }
+            Console.WriteLine();            
+
+
+        }
+        //menu da escolha do Veículo
+        public static void MenuCarro()
+        {
+
+            Console.WriteLine("Qual Veículo Desejado");
             Console.WriteLine();
+
+            Console.Write(" o veículo escolhido é: ");            
+            Console.WriteLine();
+            Console.Write("Carro: ");
+            string Carro = Console.ReadLine();
+            Console.Write("Quantos dias ou Horas deseja Alugar o veículo: ");
+            Console.WriteLine();
+
+            Console.Write("Dia Retirada");
+            double Retirada = double.Parse(Console.ReadLine());
+            TimeSpan DiaRetirada = TimeSpan.FromDays(Retirada);
+            //Console.WriteLine(DiaRetirada);  
+            
+            Console.Write("Data da entrega");
+            double Entrega = double.Parse(Console.ReadLine());
+            TimeSpan DiaEntrega = TimeSpan.FromDays(Entrega);
+
+            CalculoAluguel calculo = new CalculoAluguel(DiaRetirada, DiaEntrega);
+
+
         }
     }
 }
