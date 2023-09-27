@@ -13,7 +13,7 @@ namespace Exercicio11.Cadastros
 
     internal sealed class CadastroCarro : Cadastro
     {
-        static double Seguro = 50.00;
+        //static double Seguro = 50.00;
 
         public double ValorDia { get; set; }
        
@@ -24,14 +24,5 @@ namespace Exercicio11.Cadastros
 
         }       
 
-        //alterar ou excluir
-        public double DiasUsados(int dias, double valorDia)
-        {
-            return ValorDia * dias;
-            if (dias <= 0)
-            {
-                throw new DomainException("A quantidade de dias está abaixo do permitido");
-            }
-        }
     }
 }

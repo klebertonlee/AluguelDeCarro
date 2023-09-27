@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace System
 {
-    internal class DateExtension
+     static internal class DateExtension
     {
-
+       
     }
 }
