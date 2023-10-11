@@ -18,6 +18,8 @@ namespace Exercicio11
         {
             Console.WriteLine("Escolha o meu desejado");
             Console.WriteLine();
+            Console.WriteLine("Cadastro Opção 1: ");
+            Console.WriteLine("Escolha do Veiculo opção 2: ");
             int Menu = int.Parse(Console.ReadLine());
 
             switch (Menu)
@@ -37,9 +39,8 @@ namespace Exercicio11
                         Console.WriteLine("Escolha incorreta");
                     }
                     break;
+
             }
-            MenuCadastro();
-            MenuCarro();
 
         }
         public static void MenuCadastro()
@@ -170,27 +171,40 @@ namespace Exercicio11
 
 
         }
-        //menu da escolha do Veículo
+
+        /*---Menu da escolha do Veículo
+        ------------------------------------------------------------------*/
         public static void MenuCarro()
         {
 
             Console.WriteLine("Qual Veículo Desejado");
             Console.WriteLine();
 
-            Console.Write(" o veículo escolhido é: ");                     
+            Console.Write(" O veículo escolhido é: ");
             string Carro = Console.ReadLine();
 
-            Console.WriteLine();
-            Console.Write("Qual a data ou Horas o veículo será retirado: ");
 
-            DateTime DiaRetirada = DateTime.Parse(Console.ReadLine());
+            //Aqui poderia ter uma data e hora especifica mais quis usar o DataTime.now para usar o horario atual da retirada.
+            Console.WriteLine();
+            Console.Write("Retirada do carro: ");
+            DateTime DiaRetirada = DateTime.Now;
+            double DiaHoraRetirada = (double)DiaRetirada.Day;
+            Console.WriteLine(DiaHoraRetirada);
             Console.WriteLine();
 
+            //Aqui entraria o DateTime.Now também, mais ai não conseguiria ter um calculo de dia e horas 
             Console.Write("Dia da Entrega: ");
 
             DateTime DiaEntrega = DateTime.Parse(Console.ReadLine());
-            DuracaoAluguel duracaoAluguel = new DuracaoAluguel(DiaRetirada, DiaEntrega);
+            double DiaHoraEntrega = (double)DiaEntrega.Day;
+            Console.WriteLine(DiaHoraEntrega);
+            Console.WriteLine();
+
+            DuracaoAluguel duracaoAluguel = new DuracaoAluguel(DiaHoraRetirada, DiaHoraEntrega);
             Console.WriteLine(duracaoAluguel.aluguel());
+            Console.WriteLine(duracaoAluguel.valorAluguel());
         }
+
+
     }
 }

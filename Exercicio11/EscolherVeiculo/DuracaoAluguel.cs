@@ -6,21 +6,31 @@ using System.Threading.Tasks;
 
 namespace Exercicio11.EscolherVeiculo
 {
-    internal class DuracaoAluguel
-    {
-        public DateTime DiaRetirada { get; set; }
-       
-        public DateTime DiaEntrega { get; set; }
 
-        public DuracaoAluguel(DateTime diaRetirada, DateTime diaEntrega)
+    class DuracaoAluguel
+    {
+        public double DiaRetirada { get; set; }
+
+        public double DiaEntrega { get; set; }
+
+        public DuracaoAluguel(double diaRetirada, double diaEntrega)
         {
             DiaRetirada = diaRetirada;
             DiaEntrega = diaEntrega;
         }
 
-        public TimeSpan aluguel()
+        public double aluguel()
         {
             return DiaEntrega - DiaRetirada;
         }
+
+        //---fazer o calculo dos dias que o cliente está com o veiculo pelo valor por dia.
+        //como vou fazer para trasformar data em int ou double?
+
+        public double valorAluguel()
+        {
+            return aluguel() * 50;
+        }
+
     }
 }
