@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercicio11.Cadastros
 {
-    internal class Endereco
+    abstract class Endereco
     {
         public string Rua { get; set; }
         public int NumeroCasa { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Exercicio11.Aluguel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,12 +25,12 @@ namespace Exercicio11.EscolherVeiculo
             return DiaEntrega - DiaRetirada;
         }
 
-        //---fazer o calculo dos dias que o cliente está com o veiculo pelo valor por dia.
-        //como vou fazer para trasformar data em int ou double?
-
         public double valorAluguel()
         {
-            return aluguel() * 50;
+           double calc1 =  CalculoAluguel.ValorVeiculo + aluguel() +CalculoAluguel.ValorVeiculo;
+
+            return valorAluguel();
+
         }
 
     }

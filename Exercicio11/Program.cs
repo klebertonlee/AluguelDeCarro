@@ -16,12 +16,12 @@ namespace Exercicio11
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Escolha o meu desejado");
+            Console.WriteLine("Escolha o menu desejado");
             Console.WriteLine();
             Console.WriteLine("Cadastro Opção 1: ");
             Console.WriteLine("Escolha do Veiculo opção 2: ");
             int Menu = int.Parse(Console.ReadLine());
-
+            
             switch (Menu)
             {
                 case 1:
@@ -177,32 +177,29 @@ namespace Exercicio11
         public static void MenuCarro()
         {
 
-            Console.WriteLine("Qual Veículo Desejado");
-            Console.WriteLine();
+            Console.WriteLine("Qual Veículo Desejado \n");
+            
 
             Console.Write(" O veículo escolhido é: ");
             string Carro = Console.ReadLine();
 
-
-            //Aqui poderia ter uma data e hora especifica mais quis usar o DataTime.now para usar o horario atual da retirada.
             Console.WriteLine();
             Console.Write("Retirada do carro: ");
             DateTime DiaRetirada = DateTime.Now;
             double DiaHoraRetirada = (double)DiaRetirada.Day;
-            Console.WriteLine(DiaHoraRetirada);
-            Console.WriteLine();
-
-            //Aqui entraria o DateTime.Now também, mais ai não conseguiria ter um calculo de dia e horas 
-            Console.Write("Dia da Entrega: ");
-
+            Console.WriteLine(DiaHoraRetirada + "\n");            
+                        
+            Console.Write("Dia da Entrega: \n");
             DateTime DiaEntrega = DateTime.Parse(Console.ReadLine());
             double DiaHoraEntrega = (double)DiaEntrega.Day;
-            Console.WriteLine(DiaHoraEntrega);
-            Console.WriteLine();
+            Console.WriteLine(DiaHoraEntrega + "\n");            
 
             DuracaoAluguel duracaoAluguel = new DuracaoAluguel(DiaHoraRetirada, DiaHoraEntrega);
+
             Console.WriteLine(duracaoAluguel.aluguel());
-            Console.WriteLine(duracaoAluguel.valorAluguel());
+            Console.WriteLine(duracaoAluguel.valorAluguel() + "\n");           
+
+
         }
 
 
