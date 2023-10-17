@@ -13,17 +13,26 @@ namespace Exercicio11.Cadastros
 
     internal sealed class CadastroCarro : Cadastro
     {
-        //static double Seguro = 50.00;
+       public CadastroCarro Carro { get; set; }
 
-        public double ValorDia { get; set; }
+        
        
-        public CadastroCarro(string modelo, string marcaCarro, int anoCarro, double valorDia)
+        public CadastroCarro(string modelo, string marcaCarro, int anoCarro)
             : base(modelo, marcaCarro, anoCarro)
         {
-            ValorDia = valorDia;
 
-        }       
+        }   
+        
+        public CadastroCarro(CadastroCarro carro)
+        {
+            Carro = carro;
+        }
 
+
+        public CadastroCarro VetorCarro(CadastroCarro carro)
+        {
+            return VetorCarro();
+        }
 
 
     }

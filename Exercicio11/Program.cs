@@ -1,13 +1,10 @@
-﻿using Exercicio11.Aluguel;
+﻿using Exercicio11;
 using Exercicio11.Cadastros;
 using Exercicio11.EscolherVeiculo;
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
+using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
-
-
 
 namespace Exercicio11
 {
@@ -16,12 +13,19 @@ namespace Exercicio11
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Escolha o menu desejado");
-            Console.WriteLine();
-            Console.WriteLine("Cadastro Opção 1: ");
-            Console.WriteLine("Escolha do Veiculo opção 2: ");
+
+            MenuGeral();
+        }
+
+
+        public static void MenuGeral()
+        {
+            Console.WriteLine("KSistem Aluguel de carro \n");
+            Console.WriteLine("Cadastro digite 1: ");
+            Console.WriteLine("Veiculo digite 2: ");
+            Console.Write("Digite o numero do menu escolhido: ");
             int Menu = int.Parse(Console.ReadLine());
-            
+
             switch (Menu)
             {
                 case 1:
@@ -41,22 +45,20 @@ namespace Exercicio11
                     break;
 
             }
-
         }
+
+
+
         public static void MenuCadastro()
         {
 
+            Console.WriteLine("Cadastro \n");
 
-            Console.WriteLine("KSistem Aluguel de carro ");
 
-            Console.WriteLine();
-            Console.WriteLine("Cadastro");
-
-            Console.WriteLine();
             Console.WriteLine("Para Cadastra Veiculo Digite 1");
             Console.WriteLine("Para Cadastrar Cliente Digite 2");
-            Console.WriteLine("Para Cadastrar Funcionario Digite 3");
-            Console.Write("Digite A Opção Desejada: ");
+            Console.WriteLine("Para Cadastrar Funcionario Digite 3 \n");
+            Console.WriteLine("Digite A Opção Desejada: ");
             int opcao = int.Parse(Console.ReadLine());
 
             try
@@ -68,8 +70,12 @@ namespace Exercicio11
                         {
                             //Cadastro do veiculo
                             List<CadastroCarro> CarroCadastro = new List<CadastroCarro>();
-                            Console.WriteLine("Cadastro de Veiculo:");
-                            Console.WriteLine();
+                            Console.WriteLine("Cadastro de Veiculo: \n");
+
+                            Console.Write("Quantidade de veículos para cadastrar: ");
+                            int quantidade = int.Parse(Console.ReadLine());
+                            CadastroCarro[] carros = new CadastroCarro[quantidade];
+                            
 
                             Console.Write("Fabricante: ");
                             string MarcaCarro = Console.ReadLine();
@@ -79,20 +85,28 @@ namespace Exercicio11
                             int AnoCarro = int.Parse(Console.ReadLine());
                             Console.Write("Valor da diaria: ");
                             double ValorDia = double.Parse(Console.ReadLine());
+                            Taxas.ValorDoVeiculo(ValorDia);
+                            Console.Write("Seguro Veiculo: ");
+                            double seguroVec = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                            Taxas.SeguroDoVeiculo(seguroVec);
                             //Colocar Kilometragem inicial e final
 
                             CarroCadastro.Add(new CadastroCarro
                                 (
-                                ModeloCarro, MarcaCarro, AnoCarro, ValorDia));
-                            Console.WriteLine();
+                                ModeloCarro, MarcaCarro, AnoCarro));
+                            Console.WriteLine("Cadastro Realizado Com Sucesso!");
+                            Console.WriteLine("Digite ENTER para voltar ao menu inicial");
+                            Console.ReadKey();
+                            Console.Clear();
+                            MenuGeral();
                         }
                         break;
                     case 2:
                         {
                             //cadastro do cliente
                             List<CadastroCliente> ClienteCadastro = new List<CadastroCliente>();
-                            Console.WriteLine("Cadastro de Cliente");
-                            Console.WriteLine();
+                            Console.WriteLine("Cadastro de Cliente \n");
+
 
                             //Coloca habilitação, Categoria, data de vencimento da habilitação cliente.
                             Console.Write("Nome do Cliente: ");
@@ -115,7 +129,12 @@ namespace Exercicio11
                                  NomeCliente, CpfCliente, DataNascimento,
                                  CelularCliente, EmailCliente, Habilitacao, CartaoCliente
                                 ));
-                            Console.WriteLine();
+                            Console.WriteLine("Cadastro Realizado Com Sucesso!");
+                            Console.WriteLine("Digite ENTER para voltar ao menu inicial");
+                            Console.ReadKey();
+                            Console.Clear();
+                            MenuGeral();
+
                         }
                         break;
                     case 3:
@@ -145,7 +164,11 @@ namespace Exercicio11
                                  NomeFuncionario, MatriculaFuncionario, CpfFuncionario,
                                  DataNascimento, CelularFuncionario, EmailFuncionario, tipoFuncionario
                                 ));
-                            Console.WriteLine();
+                            Console.WriteLine("Cadastro Realizado Com Sucesso!");
+                            Console.WriteLine("Digite ENTER para voltar ao menu inicial");
+                            Console.ReadKey();
+                            Console.Clear();
+                            MenuGeral();
                         }
                         break;
 
@@ -153,11 +176,9 @@ namespace Exercicio11
                         {
                             //Caso seja inserido um codigo errado
                             Console.Clear();
-                            Console.WriteLine();
                             Console.WriteLine("Código Invalido");
-                            Console.WriteLine("Digite o Código Referente ao Cadastro Desejado: ");
-                            Console.WriteLine();
-                            MenuCadastro();
+                            Console.WriteLine("Digite o Código Referente ao Cadastro Desejado: \n");
+                            MenuGeral();
                         }
                         break;
                 }
@@ -165,7 +186,7 @@ namespace Exercicio11
             catch (Exception k)
             {
                 Console.WriteLine();
-                Console.WriteLine("Erro de Digitação" + k.Message);
+                Console.WriteLine("Erro de Digitação" + k.Message + "\n");
             }
             Console.WriteLine();
 
@@ -176,32 +197,41 @@ namespace Exercicio11
         ------------------------------------------------------------------*/
         public static void MenuCarro()
         {
+            try
+            {
+                Console.WriteLine("Veículo \n");
 
-            Console.WriteLine("Qual Veículo Desejado \n");
-            
+                Console.WriteLine("Qual Veículo Desejado \n");
 
-            Console.Write(" O veículo escolhido é: ");
-            string Carro = Console.ReadLine();
 
-            Console.WriteLine();
-            Console.Write("Retirada do carro: ");
-            DateTime DiaRetirada = DateTime.Now;
-            double DiaHoraRetirada = (double)DiaRetirada.Day;
-            Console.WriteLine(DiaHoraRetirada + "\n");            
-                        
-            Console.Write("Dia da Entrega: \n");
-            DateTime DiaEntrega = DateTime.Parse(Console.ReadLine());
-            double DiaHoraEntrega = (double)DiaEntrega.Day;
-            Console.WriteLine(DiaHoraEntrega + "\n");            
+                Console.Write(" O veículo escolhido é: ");
+                string Carro = Console.ReadLine();
 
-            DuracaoAluguel duracaoAluguel = new DuracaoAluguel(DiaHoraRetirada, DiaHoraEntrega);
+                Console.WriteLine();
+                Console.Write("Retirada do carro: ");
+                DateTime DiaRetirada = DateTime.Now;
+                double DiaHoraRetirada = (double)DiaRetirada.Day;
+                Console.WriteLine(DiaHoraRetirada + "\n");
 
-            Console.WriteLine(duracaoAluguel.aluguel());
-            Console.WriteLine(duracaoAluguel.valorAluguel() + "\n");           
+                Console.Write("Dia da Entrega: \n");
+                DateTime DiaEntrega = DateTime.Parse(Console.ReadLine());
+                double DiaHoraEntrega = (double)DiaEntrega.Day;
+                Console.WriteLine(DiaHoraEntrega + "\n");
+
+                DuracaoAluguel duracaoAluguel = new DuracaoAluguel(DiaHoraRetirada, DiaHoraEntrega);
+
+                Console.WriteLine(duracaoAluguel.aluguel());
+                Console.WriteLine(duracaoAluguel.valorAluguel() + "\n");
+
+            }
+            catch (Exception k)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Erro de Digitação" + k.Message);
+                MenuGeral();
+            }
 
 
         }
-
-
     }
 }

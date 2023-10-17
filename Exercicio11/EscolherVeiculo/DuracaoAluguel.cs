@@ -1,4 +1,4 @@
-﻿using Exercicio11.Aluguel;
+﻿using Exercicio11;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +10,8 @@ namespace Exercicio11.EscolherVeiculo
 
     class DuracaoAluguel
     {
+        public double Seguro { get; set; }
+        public double Valor { get; set; }
         public double DiaRetirada { get; set; }
 
         public double DiaEntrega { get; set; }
@@ -27,7 +29,7 @@ namespace Exercicio11.EscolherVeiculo
 
         public double valorAluguel()
         {
-           double calc1 =  CalculoAluguel.ValorVeiculo + aluguel() +CalculoAluguel.ValorVeiculo;
+           double calc1 =  Taxas.SeguroDoVeiculo(Seguro) + aluguel() + Taxas.SeguroDoVeiculo(Valor);
 
             return valorAluguel();
 

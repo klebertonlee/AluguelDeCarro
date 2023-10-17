@@ -5,26 +5,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
 
-namespace Exercicio11.Aluguel
+namespace Exercicio11
 {
-   
-    static public class Taxas
+
+    public static class Taxas
     {
         static public double ValorVeiculo { get; set; }
         static public double SeguroVeiculo { get; set; }
         static public double SeguroTerceiro { get; set; }
 
-        static double ValorDoVeiculo()
+        public static double ValorDoVeiculo(double valorVeiculo)
         {
-            return ValorVeiculo;
+            return ValorVeiculo = valorVeiculo;
         }
-        static void SeguroDoVeiculo(double veiculoSeguro)
+        public static double SeguroDoVeiculo(double veiculoSeguro)
         {
-            SeguroVeiculo = veiculoSeguro;
+            return SeguroVeiculo = veiculoSeguro;
+
         }
-        static void SeguroDoTerceiro(double terceiroSeguro)
+        public static double SeguroDoTerceiro(double terceiroSeguro)
         {
-            SeguroTerceiro = terceiroSeguro;
+            return SeguroTerceiro = terceiroSeguro;
         }
+
+
     }
+
 }
